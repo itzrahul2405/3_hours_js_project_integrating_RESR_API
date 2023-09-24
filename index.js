@@ -13,7 +13,7 @@ btn.addEventListener('click', function(){
     // const uniqueKey = new Date().getMilliseconds()
     // localStorage.setItem(uniqueKey, obj)
 
-    axios.post('https://crudcrud.com/api/2ba21c1c0553418387733d3748151b6f/candyData',obj)
+    axios.post('https://crudcrud.com/api/6bf1025c5087435b9f82c884662a9a01/candyData',obj)
     .then(res => {
 
         // const list = document.querySelector('.list')
@@ -28,7 +28,7 @@ btn.addEventListener('click', function(){
 
         // // btn1.addEventListener('click', function(){
             
-        // //     const data = axios.get('https://crudcrud.com/api/2ba21c1c0553418387733d3748151b6f/candyData')
+        // //     const data = axios.get('https://crudcrud.com/api/6bf1025c5087435b9f82c884662a9a01/candyData')
         // //     .then(res => {
         // //         const key = res._id
         // //         console.log(key)
@@ -80,7 +80,7 @@ function populatelist(){
     const list = document.querySelector('.list')
     list.innerHTML = ''
 
-    const data = axios.get('https://crudcrud.com/api/2ba21c1c0553418387733d3748151b6f/candyData')
+    const data = axios.get('https://crudcrud.com/api/6bf1025c5087435b9f82c884662a9a01/candyData')
                     .then(response => {
                     
                         const data = response.data
@@ -104,7 +104,7 @@ function populatelist(){
                             btn1.addEventListener('click', function(){
                                 
 
-                                const url = 'https://crudcrud.com/api/2ba21c1c0553418387733d3748151b6f/candyData' + '/' + key
+                                const url = 'https://crudcrud.com/api/6bf1025c5087435b9f82c884662a9a01/candyData' + '/' + key
 
                                 const tempData = axios.get(url)
                                 .then(res => {
@@ -115,8 +115,11 @@ function populatelist(){
                                     console.log(prevquantity)
                                     const updatedquantity = prevquantity - 1
                                     
-                                    axios.patch(url, {
-                                        quantity: updatedquantity
+                                    axios.put(url, {
+                                        'candyName': tempData.candyName,
+                                        'description': tempData.description,
+                                        'price': tempData.price,
+                                        'quantity': updatedquantity
                                     })
                                     .then(() => {
                                         populatelist()
@@ -138,7 +141,7 @@ function populatelist(){
                             btn2.addEventListener('click', function(){
                                 
 
-                                const url = 'https://crudcrud.com/api/2ba21c1c0553418387733d3748151b6f/candyData' + '/' + key
+                                const url = 'https://crudcrud.com/api/6bf1025c5087435b9f82c884662a9a01/candyData' + '/' + key
 
                                 const tempData = axios.get(url)
                                 .then(res => {
@@ -147,8 +150,11 @@ function populatelist(){
                                     const prevquantity = tempData.quantity
 
                                     const updatedquantity = prevquantity - 2
-                                    axios.patch(url, {
-                                        quantity: updatedquantity
+                                    axios.put(url, {
+                                        'candyName': tempData.candyName,
+                                        'description': tempData.description,
+                                        'price': tempData.price,
+                                        'quantity': updatedquantity
                                     })
                                     .then(res => populatelist())
                                     .catch(err => console.error(err))
@@ -169,7 +175,7 @@ function populatelist(){
                             btn3.addEventListener('click', function(){
                                 
 
-                                const url = 'https://crudcrud.com/api/2ba21c1c0553418387733d3748151b6f/candyData' + '/' + key
+                                const url = 'https://crudcrud.com/api/6bf1025c5087435b9f82c884662a9a01/candyData' + '/' + key
 
                                 const tempData = axios.get(url)
                                 .then(res => {
@@ -178,8 +184,11 @@ function populatelist(){
                                     const prevquantity = tempData.quantity
 
                                     const updatedquantity = prevquantity - 3
-                                    axios.patch(url, {
-                                        quantity: updatedquantity
+                                    axios.put(url, {
+                                        'candyName': tempData.candyName,
+                                        'description': tempData.description,
+                                        'price': tempData.price,
+                                        'quantity': updatedquantity
                                     })
                                     .then(res => populatelist())
                                     .catch(err => console.error(err))
